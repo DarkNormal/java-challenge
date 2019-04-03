@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.marklordan.model">
+    <class name="Driver" table="DRIVERS">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <version name="version" column="VERSION"/>
+        <property name="driverId" column="DRIVER_ID" />
+        <property name="firstName" column="FIRST_NAME" />
+        <property name="middleInit" column="MIDDLE_INIT" />
+        <property name="lastName" column="LAST_NAME" />
+        <property name="operatorClass" column="OPER_CLASS" />
+        <many-to-one name="carrier" class="com.marklordan.model.Carrier"
+                     column="carrier_id" unique="true" not-null="true"
+                     cascade="none" />
+        <many-to-one name="location" class="com.marklordan.model.Location"
+                     column="location_id" unique="true" not-null="true"
+                     cascade="none" />
+    </class>
+</hibernate-mapping>

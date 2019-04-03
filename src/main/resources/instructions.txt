@@ -1,0 +1,28 @@
+Java application that will make an API call to a web service. It will parse and persist the
+response. On next execution, it will check if any of the details have changed and update.
+NOTE This should be a stand-alone java application, it should not need to run in a web container e.g. Tomcat
+URL for Driver Details
+https://pegasus.greyhound.com/busTracker/dispatch/driverBusAssignment
+URL defined in application.properties
+Build with Maven
+3 retries in case of web service failure (configurable as well as API
+timeout) Spring not springBoot
+JPA, Junit, MySql
+Provide SQL file (so I can recreate the DB)
+Full Unit Testing with in memory DB
+All data should be trimmed for avoid leading or trailing spaces
+Driver details should be capitalised for example – CURTIS -> Curtis
+Database
+3 Tables – Drivers, Carriers and Locations
+There needs to be a foreign key link from Drivers to “Carriers” and “Locations” tables
+
+Drivers = id, version, driver_id (oper_nbr: 314),
+first_name,middle_init,last_name,oper_class,carrier_id,location_id
+
+Carrier = id, version, carrier_name (i.e. GLI)
+
+Locations = id, version, location_id (home_loc_6: 400554), location_name
+(home_loc_3: "MEM")
+
+You need to process the DB transaction in the most efficient way and it is important that there is
+unit test coverage for all parts of the application.
